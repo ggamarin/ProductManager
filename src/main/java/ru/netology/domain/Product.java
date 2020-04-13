@@ -40,27 +40,21 @@ public class Product {
         this.price = price;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-        Product product = (Product) o;
-        return getId() == product.getId() &&
-                getPrice() == product.getPrice() &&
-                getName().equals(product.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getName(), getPrice());
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+    public boolean matches(String search) {
+        Product product = new Product();
+        if (product instanceof Book) {
+            Book book = (Book) product;
+            if (book.getName().equalsIgnoreCase(search)) {
+                return true;
+            }
+            if (product instanceof Smartphone) {
+                Smartphone smartphone = (Smartphone) product;
+                if (smartphone.getName().equalsIgnoreCase(search)) {
+                    return true;
+                }
+                return true;
+            }
+        }
+        return false;
     }
 }
