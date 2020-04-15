@@ -8,26 +8,30 @@ class BookTest {
     @Test
     void shouldMatchByAuthor() {
         Book book = new Book(1, "Harry Potter", 100, "J.K.Rowling");
-        assertEquals(true, book.matches("J.K.Rowling"));
+        boolean actual = book.matches("J.K.Rowling");
+        assertTrue(actual);
 
     }
 
     @Test
     void shouldNotMatchByAuthor() {
         Book book = new Book(1, "Harry Potter", 100, "J.K.Rowling");
-        assertEquals(false, book.matches("Terry Pratchett"));
+        boolean actual = book.matches("Tolstoy");
+        assertFalse(actual);
     }
 
     @Test
     void shouldMatchByName() {
         Book book = new Book(1, "Harry Potter", 100, "J.K.Rowling");
-        assertEquals(true, book.matches("Harry Potter"));
+        boolean actual = book.matches("Harry Potter");
+        assertTrue(actual);
     }
 
     @Test
     void shouldNotMatchByName() {
         Book book = new Book(1, "Harry Potter", 100, "J.K.Rowling");
-        assertEquals(false, book.matches("Watcher"));
+        boolean actual = book.matches("LOTR");
+        assertFalse(actual);
     }
 
 }

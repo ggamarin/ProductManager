@@ -1,5 +1,6 @@
 package ru.netology.domain;
 
+
 import java.util.Objects;
 
 public class Product {
@@ -41,19 +42,8 @@ public class Product {
     }
 
     public boolean matches(String search) {
-        Product product = new Product();
-        if (product instanceof Book) {
-            Book book = (Book) product;
-            if (book.getName().equalsIgnoreCase(search)) {
-                return true;
-            }
-            if (product instanceof Smartphone) {
-                Smartphone smartphone = (Smartphone) product;
-                if (smartphone.getName().equalsIgnoreCase(search)) {
-                    return true;
-                }
-                return true;
-            }
+        if (this.getName().equalsIgnoreCase(search)) {
+            return true;
         }
         return false;
     }

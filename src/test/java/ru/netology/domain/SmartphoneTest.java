@@ -8,25 +8,29 @@ class SmartphoneTest {
     @Test
     void shouldMatchByManufacturer() {
         Smartphone smartphone = new Smartphone(3, "3310", 500, "Nokia");
-        assertEquals(true, smartphone.matches("Nokia"));
+        boolean actual = smartphone.matches("Nokia");
+        assertTrue(actual);
     }
 
     @Test
     void shouldNotMatchByManufacturer() {
         Smartphone smartphone = new Smartphone(3, "3310", 500, "Nokia");
-        assertEquals(false, smartphone.matches("Samsung"));
+        boolean actual = smartphone.matches("Huawei");
+        assertFalse(actual);
     }
 
     @Test
     void shouldMatchByName() {
         Smartphone smartphone = new Smartphone(33, "3310", 500, "Nokia");
-        assertEquals(true, smartphone.matches("3310"));
+        boolean actual = smartphone.matches("3310");
+        assertTrue(actual);
     }
 
     @Test
     void shouldNotMatchByName() {
         Smartphone smartphone = new Smartphone(3, "3310", 500, "Nokia");
-        assertEquals(false, smartphone.matches("Galaxy S10"));
+        boolean actual = smartphone.matches("S10");
+        assertFalse(actual);
     }
 
 }

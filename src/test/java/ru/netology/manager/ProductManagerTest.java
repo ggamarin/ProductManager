@@ -24,12 +24,12 @@ class ProductManagerTest {
         ProductRepository repository = new ProductRepository();
         ProductManager manager = new ProductManager(repository);
         Product[] expected = {new Book(2, "The Colour of Magic", 200, "Terry Pratchett")};
-        Product[] actual = manager.searchBy("Terry Pratchett");
+        Product[] actual = manager.searchBy("The Colour of Magic");
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void shouldSearchBySmarthoneName() {
+    void shouldSearchBySmartphoneName() {
         ProductRepository repository = new ProductRepository();
         ProductManager manager = new ProductManager(repository);
         Product[] expected = {new Smartphone(4, "Galaxy S10", 1000, "Samasung")};
@@ -44,6 +44,14 @@ class ProductManagerTest {
         Product[] expected = {new Smartphone(3, "3310", 500, "Nokia")};
         Product[] actual = manager.searchBy("Nokia");
         assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearchByNameNotExist() {
+        ProductRepository repository = new ProductRepository();
+        ProductManager manager = new ProductManager(repository);
+        Product actual = repository.findById(11);
+        assertEquals(null, actual);
     }
 
 }
